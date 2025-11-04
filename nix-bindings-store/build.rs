@@ -20,14 +20,14 @@ fn main() {
         versions
     );
 
-    let nix_version = nix_version.split('.').collect::<Vec<&str>>();
+    let nix_version = nix_version.split(|c: char| !c.is_numeric()).collect::<Vec<&str>>();
     let nix_version = (
         nix_version[0].parse::<u32>().unwrap(),
         nix_version[1].parse::<u32>().unwrap(),
     );
 
     for version_str in relevant_versions {
-        let version = version_str.split('.').collect::<Vec<&str>>();
+        let version = version_str.split(|c: char| !c.is_numeric()).collect::<Vec<&str>>();
         let version = (
             version[0].parse::<u32>().unwrap(),
             version[1].parse::<u32>().unwrap(),
